@@ -45,3 +45,20 @@ async function processQueue (oracleContract, ownerAddress) {
     processedRequests++
   }
 }
+
+async function processRequest (oracleContract, ownerAddress, id, callerAddress) {
+  let retries = 0
+  while (retries < MAX_RETRIES) {
+    try {
+      const ethPrice = await retrieveLatestEthPrice()
+      await setLatestEthPrice(oracleContract, callerAddress, ownerAddress, ethPrice, id)
+      return
+    } catch (error) {
+      if(retries === MAX_RETRIES - 1){
+          await setLatestEthPrice(oracleContract, callerAddress, ownerAddress,'0', id)
+          return
+      }
+      retries++ 
+    }
+  }
+}
