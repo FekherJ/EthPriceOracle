@@ -29,7 +29,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: UNLICENSED\r\n\r\npragma solidity ^0.8.21;\r\n\r\nabstract contract CallerContractInterface {\r\n  function callback(uint256 _ethPrice, uint256 id) public virtual;\t//Functions without implementation must be marked virtual.\r\n}\r\n",
-  "sourcePath": "D:\\Ethereum\\CryptoZombies_LVL2\\EthPriceOracle\\oracle\\contracts\\CallerContractInterface.sol",
+  "sourcePath": "/mnt/d/Ethereum/CryptoZombies_LVL2/EthPriceOracle/oracle/contracts/CallerContractInterface.sol",
   "ast": {
     "absolutePath": "project:/contracts/CallerContractInterface.sol",
     "exportedSymbols": {
@@ -164,7 +164,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-08-18T15:14:13.905Z",
+  "updatedAt": "2024-08-18T15:57:49.037Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

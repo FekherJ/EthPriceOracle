@@ -15,7 +15,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getLatestEthPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/EthPriceOracleInterface.sol\":\"EthPriceOracleInterface\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/EthPriceOracleInterface.sol\":{\"keccak256\":\"0xff36629057d38ff408ed8c6e407b15a6124c2d6010d0dd73804f8dd549c19965\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://9d4cb2b5e5e210ce70f873c39519f7e6a36a5f22a0d3df2ac831e67519bfed05\",\"dweb:/ipfs/QmVCBwvfhm7dLv2siq2mnWQL1bK5SQp2433Wr7tGszZnfD\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getLatestEthPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/EthPriceOracleInterface.sol\":\"EthPriceOracleInterface\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/EthPriceOracleInterface.sol\":{\"keccak256\":\"0x1bee3a534efc5c271f113c58b6032233d6045d2c36d7f9932e3df4f90b692d10\",\"urls\":[\"bzz-raw://2ae02b02175836787daec564a65cb9c4b0893e400d852fb2832b5c6465b82672\",\"dweb:/ipfs/QmUgkcF6x9PjJE87eNCzNw7WKhfZh6tuhWtUMGRW6QQBaY\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -23,29 +23,27 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: UNLICENSED\r\n\r\npragma solidity ^0.8.21;\r\nabstract contract EthPriceOracleInterface {\r\n  function getLatestEthPrice() public virtual returns (uint256);\t//TypeError: Functions without implementation must be marked virtual.\r\n}\r\n",
-  "sourcePath": "/mnt/d/Ethereum/CryptoZombies_LVL2/EthPriceOracle/oracle/contracts/EthPriceOracleInterface.sol",
+  "source": "pragma solidity 0.8.21;\r\nabstract contract EthPriceOracleInterface {\r\n  function getLatestEthPrice() public virtual returns (uint256);\t//Functions without implementation must be marked virtual.\r\n}\r\n",
+  "sourcePath": "/mnt/d/Ethereum/CryptoZombies_LVL2/EthPriceOracle/caller/contracts/EthPriceOracleInterface.sol",
   "ast": {
     "absolutePath": "project:/contracts/EthPriceOracleInterface.sol",
     "exportedSymbols": {
       "EthPriceOracleInterface": [
-        17
+        124
       ]
     },
-    "id": 18,
-    "license": "UNLICENSED",
+    "id": 125,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 11,
+        "id": 118,
         "literals": [
           "solidity",
-          "^",
           "0.8",
           ".21"
         ],
         "nodeType": "PragmaDirective",
-        "src": "42:24:1"
+        "src": "0:23:1"
       },
       {
         "abstract": true,
@@ -54,42 +52,42 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": false,
-        "id": 17,
+        "id": 124,
         "linearizedBaseContracts": [
-          17
+          124
         ],
         "name": "EthPriceOracleInterface",
-        "nameLocation": "86:23:1",
+        "nameLocation": "43:23:1",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "30c0b9ec",
-            "id": 16,
+            "id": 123,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getLatestEthPrice",
-            "nameLocation": "124:17:1",
+            "nameLocation": "81:17:1",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 12,
+              "id": 119,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "141:2:1"
+              "src": "98:2:1"
             },
             "returnParameters": {
-              "id": 15,
+              "id": 122,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14,
+                  "id": 121,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16,
-                  "src": "168:7:1",
+                  "scope": 123,
+                  "src": "125:7:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -97,10 +95,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 13,
+                    "id": 120,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "168:7:1",
+                    "src": "125:7:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -109,22 +107,22 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "167:9:1"
+              "src": "124:9:1"
             },
-            "scope": 17,
-            "src": "115:62:1",
+            "scope": 124,
+            "src": "72:62:1",
             "stateMutability": "nonpayable",
             "virtual": true,
             "visibility": "public"
           }
         ],
-        "scope": 18,
-        "src": "68:182:1",
+        "scope": 125,
+        "src": "25:171:1",
         "usedErrors": [],
         "usedEvents": []
       }
     ],
-    "src": "42:210:1"
+    "src": "0:198:1"
   },
   "compiler": {
     "name": "solc",
@@ -132,7 +130,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-08-18T15:57:49.047Z",
+  "updatedAt": "2024-08-18T16:30:26.346Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

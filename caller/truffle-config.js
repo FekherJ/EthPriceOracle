@@ -7,7 +7,7 @@ module.exports = {
   networks: {
     extdev: {
       provider: function () {
-        const privateKey = fs.readFileSync(path.join(__dirname, 'caller_private_key'), 'utf-8')
+        const privateKey = fs.readFileSync(path.join(__dirname, 'caller_private_key.txt'), 'utf-8')
         const chainId = 'extdev-plasma-us1'
         const writeUrl = 'wss://extdev-plasma-us1.dappchains.com/websocket'
         const readUrl = 'wss://extdev-plasma-us1.dappchains.com/queryws'
@@ -18,7 +18,7 @@ module.exports = {
   },
   compilers: {
     solc: {
-      version: '0.5.0'
+      version: '0.8.21'
     }
   }
 }
