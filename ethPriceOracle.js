@@ -88,10 +88,20 @@ async function setLatestEthPrice (oracleContract, callerAddress, ownerAddress, e
 }
 
 async function init () {
-      const {ownerAddress, web3js, client} = common.loadAccount(PRIVATE_KEY_FILE_NAME)
-      const oracleContract = await getOracleContract(web3js)
-      await filterEvents(oracleContract, web3js)
-      return {oracleContract, ownerAddress, client}
-  }
-  
+  const { ownerAddress, web3js, client } = common.loadAccount(PRIVATE_KEY_FILE_NAME)
+  const oracleContract = await getOracleContract(web3js)
+  await filterEvents(oracleContract, web3js)
+  return { oracleContract, ownerAddress, client }
+}
 
+(async () => {
+  const { oracleContract, ownerAddress, client } = await init()
+  process.on( 'SIGINT', () => {
+    console.log('Calling client.disconnect()')
+        client.disconnect()
+    process.exit( )
+  })
+  setInterval(async () => {
+    await processQueue(oracleContract, ownerAddress)
+  }, SLEEP_INTERVAL)
+})()
