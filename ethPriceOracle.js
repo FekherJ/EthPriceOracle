@@ -13,6 +13,17 @@ async function getOracleContract (web3js) {
   return new web3js.eth.Contract(OracleJSON.abi, OracleJSON.networks[networkId].address)
 }
 
+async function retrieveLatestEthPrice () {
+  const resp = await axios({
+    url: 'https://api.binance.com/api/v3/ticker/price',
+    params: {
+      symbol: 'ETHUSDT'
+    },
+    method: 'get'
+  })
+  return resp.data.price
+}
+
 async function filterEvents (oracleContract, web3js) {
   oracleContract.events.GetLatestEthPriceEvent(async (err, event) => {
     if (err) {
@@ -54,11 +65,33 @@ async function processRequest (oracleContract, ownerAddress, id, callerAddress) 
       await setLatestEthPrice(oracleContract, callerAddress, ownerAddress, ethPrice, id)
       return
     } catch (error) {
-      if(retries === MAX_RETRIES - 1){
-          await setLatestEthPrice(oracleContract, callerAddress, ownerAddress,'0', id)
-          return
+      if (retries === MAX_RETRIES - 1) {
+        await setLatestEthPrice(oracleContract, callerAddress, ownerAddress, '0', id)
+        return
       }
-      retries++ 
+      retries++
     }
   }
 }
+
+async function setLatestEthPrice (oracleContract, callerAddress, ownerAddress, ethPrice, id) {
+  ethPrice = ethPrice.replace('.', '')
+  const multiplier = new BN(10**10, 10)
+  const ethPriceInt = (new BN(parseInt(ethPrice), 10)).mul(multiplier)
+  const idInt = new BN(parseInt(id))
+  try {
+    await oracleContract.methods.setLatestEthPrice(ethPriceInt.toString(), callerAddress, idInt.toString()).send({ from: ownerAddress })
+  } catch (error) {
+    console.log('Error encountered while calling setLatestEthPrice.')
+    // Do some error handling
+  }
+}
+
+async function init () {
+      const {ownerAddress, web3js, client} = common.loadAccount(PRIVATE_KEY_FILE_NAME)
+      const oracleContract = await getOracleContract(web3js)
+      await filterEvents(oracleContract, web3js)
+      return {oracleContract, ownerAddress, client}
+  }
+  
+
